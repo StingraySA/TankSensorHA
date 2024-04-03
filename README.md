@@ -1,5 +1,4 @@
 # TankSensorHADIY Water Tank Level Sensor for Home Assistant
-==============================================
 
 This post will help you to build, configure and set up the tank level monitor using ESPHome in Home Assistant.
 
