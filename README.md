@@ -16,9 +16,9 @@ You will require the following items to assemble the PCB:
 \* 1 x Waterproof Enclosure ( I’ve opted for a 110cm x 110cm enclosure from my local hardware store )  
 \* 1 x Tube of Marine Clear Silicone
 
-If you do not have the PCB, you can download the Gerber files in this Repo.
+If you do not have the PCB, you can download the Gerber files [here](/Gerber_Water-Tank-Sensor-with-D1-Mini_PCB_Water-Tank-Sensor-with-D1-Mini_2024-04-03.zip)
 
-![](https://github.com/StingraySA/TankSensorHA/Images/PCB.png)
+![](/Images/PCB.png)
 
 The circuit is pretty self explanatory. Add the resistors and the LED in their designated spots. Next install the screw terminal. Before you install the transformer or the D1 Mini, we first need to upload our program onto the D1 Mini.
 
@@ -44,15 +44,15 @@ So in my example above, I have two water tanks. One that is filled with municipa
 
 Next you can upload the code to the D1 Mini. Once the code is uploaded it should connect to your Wi-Fi network and you should be seeing some output like below when you click on Logs and then Wirelessly.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-1.png)
+![](/Images/ESPHome.png)
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-2.png)
+![](/Images/ESPHome1.png)
 
 Right, so now we are receiving the distance data from the sensors. When you go back to Home Assistant you should see that a new device has been discovered. Click on the new device and select add. Next Home Assistant will ask you for the API key. Paste in the key you copied when we created the new ESPHome device. Now you should see them under Settings -> Devices and Services -> ESPHome.
 
 When you click on the Water Tank, you should have two entities like below:
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-3.png)
+![](/Images/HA1.png)
 
 Now we need to do some math. You will require the following measurements:
 
@@ -60,7 +60,7 @@ Now we need to do some math. You will require the following measurements:
 *   The height of the sensor from the lid to the full water level.
 *   The water capacity of your water tank.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-8.png)
+![](/Images/Tank_Measure.png)
 
 Using a text editor, edit your templates.yaml file in Home Assistant and add the following while replacing the values with your own measured values. Don’t worry if it’s a bit wonky still. We will fine tune them later. Do this for both tanks if you are using two and amend the names and values accordingly.
 
@@ -94,21 +94,21 @@ Save the file and click on Developer Tools in Home Assistant and click on Check 
 
 Next we need to add them to Home Assistant. The entities will all be there, so you can add them to any dashboard.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-4.png)
+![](/Images/HA2.png)
 
 Now we need to install the sensors on the tanks. Install the PCB into the enclosure and connect each of the sensor wires to their respective daughter boards. Make sure the holes you’ve made into the enclosure is sealed with marine silicone. Next install the sensor into the lid of the tanks and seal them with silicone.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-5.png)
+![](/Images/TankLid.png)
 
 Route the wires and attach the enclosure where water will not be able to get into it. I prefer off the ground. Run a power line to the enclosure and connect it to the screw terminals and once again seal the hole you’ve made for this wire. Now we are done with the enclosure. Close it up and mount it against a tank.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-6.png)
+![](/Images/Enclosure.png)
 
 Now that it’s mounted you can power it on and go back to Home Assistant to wait for it to connect to your Wi-Fi again. Now you can check the values that is shown in Home Assistant and modify your Template.yaml to fine tune the values so that 100% is when the tank is filled.
 
 Note that there is one caveat to these sensors. There are some drawbacks to not using the very expensive ultrasonic sensors. One is that it is prone to false readings due to condensation. This can be alleviated by installing a mesh breather into your tank.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image-7.png)
+![](/Images/AirVent.png)
 
 The second is that when it rains and water is flowing into the tank, it can interfere with the ultrasonic sounds and may give some weird readings. Thirdly bats are proving to be very chatty when they get close to the tanks. It doesn’t hurt them at all, they just have to screech a bit more to locate their own signals.
 
