@@ -16,9 +16,9 @@ You will require the following items to assemble the PCB:
 \* 1 x Waterproof Enclosure ( I’ve opted for a 110cm x 110cm enclosure from my local hardware store )  
 \* 1 x Tube of Marine Clear Silicone
 
-If you do not have the PCB, you can download the Gerber files [Here](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/Gerber_Water-Tank-Sensor-with-D1-Mini_PCB_Water-Tank-Sensor-with-D1-Mini_2024-03-26.zip)
+If you do not have the PCB, you can download the Gerber files in this Repo.
 
-![](https://crazystingray.co.za/wp/wp-content/uploads/2024/03/image.png)
+![](https://github.com/StingraySA/TankSensorHA/Images/PCB.png)
 
 The circuit is pretty self explanatory. Add the resistors and the LED in their designated spots. Next install the screw terminal. Before you install the transformer or the D1 Mini, we first need to upload our program onto the D1 Mini.
 
