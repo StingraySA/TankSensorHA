@@ -28,17 +28,21 @@ As per the video, click on New Device and select how you are connecting to it. N
 
 You should be on a page where you can enter code. Go to the last line of code, and add the following:
 
-    sensor:
-      - platform: ultrasonic
-        accuracy_decimals: 4
-        trigger_pin: D2
-        echo_pin: D1
-        name: "Municipal Water Tank Sensor"
-      - platform: ultrasonic
-        accuracy_decimals: 4
-        trigger_pin: D4
-        echo_pin: D3
-        name: "Rain Water Tank Sensor"
+```
+sensor:
+  - platform: ultrasonic
+    accuracy_decimals: 4
+    trigger_pin: GPIO4
+    echo_pin: GPIO5
+    name: "Municipal Water Tank Sensor"
+    id: municipal_water_tank_sensor
+  - platform: ultrasonic
+    accuracy_decimals: 4
+    trigger_pin: GPIO2
+    echo_pin: GPIO0
+    name: "Rain Water Tank Sensor"
+    id: rain_water_tank_sensor
+```
 
 So in my example above, I have two water tanks. One that is filled with municipal water and the second with rain water. So name them according to your setup. The first tank is connected to H1 and the second to H2. If you are only using one tank, use the first set of parameters and leave the second.
 
@@ -64,7 +68,7 @@ Now we need to do some math. You will require the following measurements:
 
 Using a text editor, edit your templates.yaml file in Home Assistant and add the following while replacing the values with your own measured values. Don’t worry if it’s a bit wonky still. We will fine tune them later. Do this for both tanks if you are using two and amend the names and values accordingly.
 
-    
+```
           # Rain Water Tank
         - name: "Full Water Height Rain Tank"
           state: "151.65"
@@ -89,6 +93,7 @@ Using a text editor, edit your templates.yaml file in Home Assistant and add the
             (states('sensor.water_tank_level_percentage_rain_tank')|float(0) / 100))
             | round(2) }}
           unit_of_measurement: "l"
+```
 
 Save the file and click on Developer Tools in Home Assistant and click on Check Configuration. If all is good you will get a message that the config will not stop Home Assistant from starting. Scroll down and click on Template Entries. This will refresh all the values we’ve just added.
 
